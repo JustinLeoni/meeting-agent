@@ -79,6 +79,18 @@ Abre [http://localhost:8787](http://localhost:8787) en el navegador.
 5. Pulsa **Activar micrófono**, acepta el permiso del navegador y habla.
 6. Pega un enlace de Google Meet en la parte superior y pulsa **Entrar con Nova**. Se abrirá Chrome y Nova intentará unirse con ese nombre.
 
+### Cuenta Google exclusiva para Nova
+
+Para que Nova pueda reutilizar una sesión autorizada:
+
+1. Crea una cuenta Google separada para el agente, por ejemplo `nova.reuniones@gmail.com`.
+2. Arranca la aplicación y pulsa **Entrar con Nova**.
+3. En la ventana de Chrome que se abre, inicia sesión manualmente con esa cuenta.
+4. Cierra o vuelve a la aplicación y pulsa **Entrar con Nova** otra vez.
+5. La sesión queda guardada en `.meeting-profile/`, que está excluida de Git.
+
+No pongas la contraseña en `.env`, en el código ni en el chat. El agente no debe usar una cuenta personal ni hacerse pasar por una persona real; debe aparecer como `Nova — Agente IA`.
+
 Chrome y Edge suelen ofrecer el mejor soporte para reconocimiento de voz del navegador.
 
 ## 6. Flujo previsto para Google Meet

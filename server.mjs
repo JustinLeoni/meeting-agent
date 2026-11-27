@@ -7,7 +7,9 @@ import { chromium } from "playwright";
 const root = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(root, "public");
 const port = Number(process.env.PORT || 8787);
+const meetingProfileDir = process.env.MEETING_PROFILE_DIR || path.join(root, ".meeting-profile");
 let meetingBrowser;
+let meetingContext;
 let meetingPage;
 let meetingState = { status: "idle", url: null, message: "Sin reunión" };
 
@@ -45,10 +47,14 @@ async function joinMeeting(req, res) {
   res.writeHead(202, { "content-type": "application/json" });
   res.end(JSON.stringify(meetingState));
   try {
-    if (!meetingBrowser) meetingBrowser = await chromium.launch({ headless: false, executablePath: process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" });
-    if (!meetingPage || meetingPage.isClosed()) meetingPage = await meetingBrowser.newPage({ viewport: { width: 1280, height: 800 } });
+    if (!meetingContext) meetingContext = await chromium.launchPersistentContext(meetingProfileDir, { headless: false, executablePath: process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome", viewport: { width: 1280, height: 800 } });
+    if (!meetingPage || meetingPage.isClosed()) meetingPage = await meetingContext.newPage();
     await meetingPage.goto(meetingUrl, { waitUntil: "domcontentloaded", timeout: 30000 });
     await meetingPage.waitForTimeout(2500);
+    if (meetingPage.url().includes("accounts.google.com")) {
+      meetingState = { status: "login_required", url: meetingUrl, message: "Inicia sesión con la cuenta Google exclusiva de Nova en la ventana abierta y vuelve a pulsar Entrar con Nova." };
+      return;
+    }
     const nameInput = meetingPage.locator('input[placeholder*="nombre" i], input[aria-label*="nombre" i]').first();
     if (await nameInput.count()) await nameInput.fill(process.env.MEETING_DISPLAY_NAME || "Nova — Agente IA");
     const joinButton = meetingPage.getByRole("button", { name: /unirse ahora|solicitar unirse|join now|ask to join/i }).first();
