@@ -2,7 +2,7 @@
 
 Prototipo local de un agente de reuniones con avatar animado y adaptador NVIDIA NIM.
 
-> Estado actual: esta versión prueba el avatar, el chat, el micrófono del navegador y las respuestas de NVIDIA. El servidor MCP y la entrada automática a Google Meet todavía están en desarrollo; por ahora no se conecta solo a una llamada real.
+> Estado actual: esta versión prueba el avatar, el chat, el micrófono del navegador, las respuestas de NVIDIA y la apertura automática de Google Meet en una ventana visible. El anfitrión puede tener que admitir a Nova. La captura de audio/transcripción de la llamada y el servidor MCP completo todavía están en desarrollo.
 
 ## 1. Requisitos
 
@@ -77,6 +77,7 @@ Abre [http://localhost:8787](http://localhost:8787) en el navegador.
 3. Observa cómo Nova cambia entre los estados “Pensando”, “Hablando” y “Escuchando”.
 4. Pulsa **Leer respuesta** para escuchar la respuesta.
 5. Pulsa **Activar micrófono**, acepta el permiso del navegador y habla.
+6. Pega un enlace de Google Meet en la parte superior y pulsa **Entrar con Nova**. Se abrirá Chrome y Nova intentará unirse con ese nombre.
 
 Chrome y Edge suelen ofrecer el mejor soporte para reconocimiento de voz del navegador.
 

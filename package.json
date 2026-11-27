@@ -6,5 +6,8 @@
   "scripts": {
     "dev": "node server.mjs",
     "start": "node server.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.55.0"
   }
 }
