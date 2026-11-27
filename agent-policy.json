@@ -1,0 +1,30 @@
+{
+  "agentName": "Nova",
+  "autonomy": {
+    "automatic": [
+      "join_authorized_meetings",
+      "announce_presence",
+      "transcribe_conversation",
+      "answer_questions_when_addressed",
+      "maintain_meeting_notes",
+      "summarize_meeting",
+      "extract_decisions_and_action_items",
+      "save_project_memory",
+      "prepare_draft_documents_and_tasks"
+    ],
+    "requiresApproval": [
+      "send_external_message",
+      "publish_document",
+      "modify_or_delete_shared_data",
+      "execute_code_or_shell_commands",
+      "invite_or_remove_participants",
+      "spend_money_or_create_paid_resources"
+    ]
+  },
+  "safety": {
+    "mustBeVisibleInMeeting": true,
+    "mustAnnounceRecordingOrTranscription": true,
+    "neverRecordWithoutConsent": true,
+    "humanCanPauseOrRemoveAgent": true
+  }
+}
