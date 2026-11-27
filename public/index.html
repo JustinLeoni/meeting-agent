@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Meeting Agent</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+  <main class="shell">
+    <header><div><span class="eyebrow">MEETING AGENT · PROTOTIPO</span><h1>Tu agente está en la reunión</h1></div><span id="status" class="status">Listo</span></header>
+    <section class="stage">
+      <div id="avatar" class="avatar listening"><div class="halo"></div><div class="face"><div class="eye left"></div><div class="eye right"></div><div class="mouth"></div></div></div>
+      <h2>Nova</h2><p id="state">Escuchando la conversación</p>
+      <div class="meter"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </section>
+    <section class="panel"><div id="log" class="log"><p class="muted">Escribe una pregunta para probar el agente.</p></div><form id="form"><input id="input" autocomplete="off" placeholder="Pregunta algo a Nova…"><button>Enviar</button></form><div class="actions"><button id="listen" class="secondary">🎙️ Activar micrófono</button><button id="speak" class="secondary">🔊 Leer respuesta</button></div></section>
+  </main><script src="/app.js"></script>
+</body></html>
